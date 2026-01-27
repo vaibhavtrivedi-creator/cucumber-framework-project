@@ -1,15 +1,16 @@
 const { Given, When, Then } = require("@cucumber/cucumber");
 const { expect } = require("@playwright/test");
-const playwright = require("playwright");
 
-Given("the user is on the login page", async function () {
-  const browser = await playwright.chromium.launch({ headless: false });
-  const context = await browser.newContext();
-  const page = await context.newPage();
-  this.page = page;
-  await this.page.goto("https://rahulshettyacademy.com/client/#/auth/login");
-  await this.page.waitForLoadState("networkidle");
-});
+Given(
+  "the user is on the login page",
+  {
+    timeout: 10000,
+  },
+  async function () {
+    await this.page.goto("https://rahulshettyacademy.com/client/#/auth/login");
+    await this.page.waitForLoadState("networkidle");
+  },
+);
 
 When(
   "the user enters {string} and {string}",
