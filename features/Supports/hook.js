@@ -1,4 +1,4 @@
-const { Before, After, AfterStep, Status } = require("@cucumber/cucumber");
+const { Before, After, AfterStep, Status, BeforeAll } = require("@cucumber/cucumber");
 const { chromium } = require("playwright");
 
 Before(async function () {
