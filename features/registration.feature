@@ -20,11 +20,14 @@ Feature: Registration
             | firstname | email   | phoneNumber | password  | confirmPassword |
             | Bb        | vaibhav | 90169       | Vibhu@990 | Vibhu@991       |
 
-# Scenario: Registration with missing required fields
-#     Given I am on the registration page
-#     When I fill in the registration form with missing required fields
-#     And I submit the form
-#     Then I should see error messages indicating which fields are required
+    Scenario Outline: Registration with valid details
+        Given I am on the registration page
+        When I fill in the registration form with valid First Name "<firstname>",Last Name "<lastname>"  Email "<email>", PhoneNumber "<phoneNumber>", Password "<password>" , Confirm Password "<confirmPassword>" and Occupation "<dropdownOption>"
+        And I submit the form
+        Then I should see success message indicating successful registration
+        Examples:
+            | firstname | lastname | email                    | phoneNumber | password  | confirmPassword | dropdownOption |
+            | Vaibhav   | Trivedi  | vaibhav.esprit@gmail.com | 9016730299  | Vibhu@990 | Vibhu@990       | Engineer       |
 
 # Scenario: Successful registration with valid details
 #     Given I am on the registration page

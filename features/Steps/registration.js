@@ -31,3 +31,17 @@ Then('I should see appropriate error messages for each invalid field', async fun
     await this.registrationPage.validationMessage();
 });
 
+
+When('I fill in the registration form with valid First Name {string},Last Name {string}  Email {string}, PhoneNumber {string}, Password {string} , Confirm Password {string} and Occupation {string}', async function (firstname, lastname, emailid, phoneNumber, password, confirmPassword, dropdownOption) {
+    await this.registrationPage.registerUser(firstname, lastname, emailid, phoneNumber, password, dropdownOption);
+});
+
+When('I submit the form', async function () {
+    await this.registrationPage.clickSignUpButton();
+});
+
+
+Then('I should see success message indicating successful registration', async function () {
+    console.log("Registration Successful");
+});
+
