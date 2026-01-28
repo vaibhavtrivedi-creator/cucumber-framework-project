@@ -67,8 +67,8 @@ class Registration {
         await this.password.fill(password);
         await this.confirmPassword.fill(password);
         await this.checkBox.check();
-        await this.submitButton.click();
     }
+
 
 
 }
