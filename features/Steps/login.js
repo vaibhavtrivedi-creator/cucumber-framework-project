@@ -26,7 +26,7 @@ When("clicks the login button", async function () {
 
 Then(
   "the user should be redirected to the dashboard page", async function () {
-    await this.page.waitForSelector('button[routerlink="/dashboard/cart"]', { timeout: 30000 });
+    await this.page.waitForSelector('button[routerlink="/dashboard/cart"]', { timeout: 20000 });
     await expect(this.page).toHaveURL(
       "https://rahulshettyacademy.com/client/#/dashboard/dash",
     );
