@@ -9,7 +9,7 @@ Given(
   async function () {
     await this.page.goto("https://rahulshettyacademy.com/client/#/auth/login");
     await this.page.waitForLoadState("networkidle");
-  },
+  }
 );
 
 When(
@@ -17,7 +17,7 @@ When(
   async function (username, password) {
     await this.page.locator("#userEmail").fill(username);
     await this.page.locator("#userPassword").fill(password);
-  },
+  }
 );
 
 When("clicks the login button", async function () {
@@ -25,10 +25,11 @@ When("clicks the login button", async function () {
 });
 
 Then(
-  "the user should be redirected to the dashboard page", async function () {
+  "the user should be redirected to the dashboard page",
+  async function () {
     await this.page.waitForSelector('button[routerlink="/dashboard/cart"]', { timeout: 20000 });
     await expect(this.page).toHaveURL(
-      "https://rahulshettyacademy.com/client/#/dashboard/dash",
+      "https://rahulshettyacademy.com/client/#/dashboard/dash"
     );
-  },
+  }
 );
