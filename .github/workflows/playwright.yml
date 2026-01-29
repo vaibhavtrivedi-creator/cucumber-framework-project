@@ -4,13 +4,13 @@ on:
     branches: [main]
     paths:
       - "tests/**"
-      - "Features/**"
+      - "features/**"
       - ".github/workflows/playwright.yml"
   pull_request:
     branches: [main]
     paths:
       - "tests/**"
-      - "Features/**"
+      - "features/**"
       - ".github/workflows/playwright.yml"
 jobs:
   test:
