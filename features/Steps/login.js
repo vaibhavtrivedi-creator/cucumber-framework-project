@@ -1,6 +1,5 @@
 const { Given, When, Then } = require("@cucumber/cucumber");
 const { expect } = require("@playwright/test");
-const { time } = require("node:console");
 
 Given(
   "the user is on the login page",
