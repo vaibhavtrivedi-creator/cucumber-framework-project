@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: Cucumber Playwright Tests
 on:
   push:
     branches: [main]
@@ -22,11 +22,11 @@ jobs:
         run: npm ci
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-      - name: Run Playwright tests
-        run: npx playwright test
+      - name: Run Cucumber tests
+        run: npx cucumber-js features --require Features/steps/*.js
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
-          name: playwright-report
+          name: cucumber-report
           path: playwright-report/
           retention-days: 30
