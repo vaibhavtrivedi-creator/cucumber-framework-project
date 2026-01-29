@@ -1,5 +1,6 @@
 const { Given, When, Then } = require("@cucumber/cucumber");
 const { expect } = require("@playwright/test");
+const { time } = require("node:console");
 
 Given(
   "the user is on the login page",
@@ -25,10 +26,8 @@ When("clicks the login button", async function () {
 });
 
 Then(
-  "the user should be redirected to the dashboard page",
-  { timeout: 10000 },
-  async function () {
-    await this.page.locator('button[routerlink="/dashboard/cart"]').waitFor();
+  "the user should be redirected to the dashboard page", async function () {
+    await this.page.waitForSelector('button[routerlink="/dashboard/cart"]', { timeout: 30000 });
     await expect(this.page).toHaveURL(
       "https://rahulshettyacademy.com/client/#/dashboard/dash",
     );
