@@ -4,10 +4,14 @@ on:
     branches: [main]
     paths:
       - "tests/**"
+      - "Features/**"
+      - ".github/workflows/playwright.yml"
   pull_request:
     branches: [main]
     paths:
       - "tests/**"
+      - "Features/**"
+      - ".github/workflows/playwright.yml"
 jobs:
   test:
     timeout-minutes: 60
