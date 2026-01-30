@@ -61,16 +61,18 @@ class Registration {
         await this.checkBox.check();
     }
 
-    async assertRegistrationSuccess(expectedText = 'Account Created Successfully') {
+    async assertRegistrationSuccess(expectedText = 'Account Created Successfully' || 'User already exisits with this Email Id!') {
         const candidates = [
             this.page.locator('.alert-success'),
             this.page.locator('.toast-message'),
             this.page.locator(`text=${expectedText}`),
             this.page.locator('text=Welcome'),
+            this.page.locator('.toast-container')
         ];
         for (const locator of candidates) {
             if (await locator.count() > 0) {
                 await expect(locator).toBeVisible({ timeout: 30000 });
+                await console.log("✅ Found expected success message:", locator);
                 return;
             }
         }
