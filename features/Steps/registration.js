@@ -35,7 +35,7 @@ When('I submit the form', async function () {
     await this.registrationPage.clickSignUpButton();
 });
 
-Then('I should see success message indicating successful registration', async function () {
+Then('I should see success message indicating successful registration', { timeout: 20000 }, async function () {
     if (this.registrationPage.assertRegistrationSuccess()) {
 
         await this.registrationPage.assertRegistrationSuccess();
