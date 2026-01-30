@@ -3,12 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "cucumber:run": "cucumber-js features --require features/steps/*.js --require features/supports/hook.js -f json:reports/cucumber.json",
+    "cucumber:report": "npx @cucumber/html-formatter -i reports/cucumber.json -o reports/cucumber.html"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@cucumber/cucumber": "^12.6.0",
+    "@cucumber/html-formatter": "^23.0.0",
     "@playwright/test": "^1.58.0",
     "@types/node": "^25.0.10",
     "playwright": "^1.58.0"

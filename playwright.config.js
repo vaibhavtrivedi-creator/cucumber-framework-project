@@ -44,7 +44,7 @@ export default defineConfig({
       use: {
         browserName: "chromium",
         channel: "chrome",
-        headless: true,
+        headless: false,
         viewport: { width: 1280, height: 720 },
         trace: "retain-on-failure",
         video: "retain-on-failure",
