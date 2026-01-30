@@ -61,23 +61,31 @@ class Registration {
         await this.checkBox.check();
     }
 
-    async assertRegistrationSuccess(expectedText = 'Account Created Successfully' || 'User already exisits with this Email Id!') {
+    async assertRegistrationSuccess() {
+        const messages = [
+            'Account Created Successfully',
+            'User already exists with this Email Id!'
+        ];
+
         const candidates = [
             this.page.locator('.alert-success'),
             this.page.locator('.toast-message'),
-            this.page.locator(`text=${expectedText}`),
-            this.page.locator('text=Welcome'),
-            this.page.locator('.toast-container')
+            this.page.locator('.toast-container'),
+            ...messages.map(msg => this.page.locator(`text=${msg}`))
         ];
+
         for (const locator of candidates) {
             if (await locator.count() > 0) {
-                await expect(locator).toBeVisible({ timeout: 30000 });
-                await console.log("✅ Found expected success message:", locator);
+                await expect(locator.first()).toBeVisible({ timeout: 30000 });
+                console.log("✅ Found expected message:", await locator.first().textContent());
                 return;
             }
         }
-        await expect(this.page.locator(`text=${expectedText}`)).toBeVisible({ timeout: 30000 });
+
+        throw new Error('❌ No success or duplicate-user message found');
+
     }
+
 }
 
 module.exports = Registration;
