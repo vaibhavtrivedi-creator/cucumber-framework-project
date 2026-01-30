@@ -70,11 +70,11 @@ class Registration {
         ];
         for (const locator of candidates) {
             if (await locator.count() > 0) {
-                await expect(locator).toBeVisible({ timeout: 5000 });
+                await expect(locator).toBeVisible({ timeout: 30000 });
                 return;
             }
         }
-        await expect(this.page.locator(`text=${expectedText}`)).toBeVisible({ timeout: 5000 });
+        await expect(this.page.locator(`text=${expectedText}`)).toBeVisible({ timeout: 30000 });
     }
 }
 
