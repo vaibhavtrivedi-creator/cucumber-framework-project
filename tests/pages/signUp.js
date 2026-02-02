@@ -63,8 +63,8 @@ class Registration {
 
     async assertRegistrationSuccess() {
         const messages = [
-            'Account Created Successfully',
-            'User already exists with this Email Id!'
+            'Success messages',//'Account Created Successfully',
+            'Exited user messages'//'User already exists with this Email Id!'
         ];
 
         const candidates = [
